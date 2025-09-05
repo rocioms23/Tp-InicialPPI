@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/style/default.css">
+    <link rel="stylesheet" href="../../static/style/inicioAdmin.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Inicio - Panel de Administración</title>
+</head>
+
+<body class="flex-col items-center justify-between">
+    <header class="barraSuperior w-full shadow-md">
+        <div class=" w-full px-4 py-2 flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-gray-800 mx-2">Panel de Administración</h1>
+            <h1 class="text-xl text-gray-600 mx-2">Empleados</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="admin/"
+                            class=" justify-center hover:text-gray-100 text-white bg-gray-800 rounded-xl px-2 py-1 transition-colors duration-300 active">Inicio</a>
+                    </li>
+                    <li><a href="/admin/estadisticas"
+                            class="justify-center  hover:text-gray-800">Estadistica</a></li>
+                    <li><a href="/admin/actividad"
+                            class="justify-center  hover:text-gray-800">Actividad</a></li>
+                    <li><a href="/" class="justify-center  hover:text-gray-800">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+    <div class="infoAdmin my-4 mx-80 p-4 border rounded-lg shadow-md shadow-md flex flex-col">
+        <h2 class="text-2xl font-bold ">Mis datos</h2>
+        <div class="flex items-center mt-4">
+            <img class="previewAdmin w-40 h-40 rounded-full mx-4"
+                src="../../static/assets/imagen/imagen_prototipo_admin.jpg" alt="Foto de perfil">
+            <div>
+                <p id="nombreUsuario" class="text-xl font-bold">JOSE LUIS LOPEZ</p>
+                <p id="sectorUsuario" class="text-lg font-semibold text-gray-600">Sector: 5 - Administración</p>
+                <p id="correoElectronico" class="text-lg font-semibold my-4">admin@empresa.com</p>
+            </div>
+        </div>
+    </div>
+    <div class="empleados1 my-2 mx-32 p-4 border rounded-lg shadow-md shadow-md flex flex-col">
+        <h2 class="text-2xl font-bold mb-4">Lista de Empleados Sector 1</h2>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Foto</th>
+                    <th class="py-2 px-4 border-b">Nombre</th>
+                    <th class="py-2 px-4 border-b">Correo Electrónico</th>
+                    <th class="py-2 px-4 border-b">Rol</th>
+                    <th class="py-2 px-4 border-b">Nivel Acceso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="tablaEmpleados1">
+                    <td class="py-2 px-4 border-b">Juan Pérez</td>
+                </tr>
+        </table>
+        </h2>
+    </div>
+
+    <div class="empleados2 my-2 mx-32 p-4 border rounded-lg shadow-md shadow-md flex flex-col">
+        <h2 class="text-2xl font-bold mb-4">Lista de Empleados Sector 2</h2>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Foto</th>
+                    <th class="py-2 px-4 border-b">Nombre</th>
+                    <th class="py-2 px-4 border-b">Correo Electrónico</th>
+                    <th class="py-2 px-4 border-b">Rol</th>
+                    <th class="py-2 px-4 border-b">Nivel Acceso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="tablaEmpleados2">
+                    <td class="py-2 px-4 border-b">Juan Pérez</td>
+                </tr>
+        </table>
+        </h2>
+    </div>
+    <div class="empleados3 my-2 mx-32 p-4 border rounded-lg shadow-md shadow-md flex flex-col">
+        <h2 class="text-2xl font-bold mb-4">Lista de Empleados Sector 3</h2>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Foto</th>
+                    <th class="py-2 px-4 border-b">Nombre</th>
+                    <th class="py-2 px-4 border-b">Correo Electrónico</th>
+                    <th class="py-2 px-4 border-b">Rol</th>
+                    <th class="py-2 px-4 border-b">Nivel Acceso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="tablaEmpleados3">
+                    <td class="py-2 px-4 border-b">Juan Pérez</td>
+                </tr>
+        </table>
+        </h2>
+    </div>
+    </div>
+    <div class="empleados4 my-2 mx-32 p-4 border rounded-lg shadow-md shadow-md flex flex-col">
+        <h2 class="text-2xl font-bold mb-4">Lista de Empleados Sector 4</h2>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Foto</th>
+                    <th class="py-2 px-4 border-b">Nombre</th>
+                    <th class="py-2 px-4 border-b">Correo Electrónico</th>
+                    <th class="py-2 px-4 border-b">Rol</th>
+                    <th class="py-2 px-4 border-b">Nivel Acceso</th>
+                </tr>
+            </thead>
+            <tbody id="tablaEmpleados4">
+                <tr>
+                    <td class="py-2 px-4 border-b">Juan Pérez</td>
+                </tr>
+        </table>
+        </h2>
+    </div>
+    <div class="empleados5 my-2 mx-32 p-4 border rounded-lg shadow-md shadow-md flex flex-col">
+        <h2 class="text-2xl font-bold mb-4">Lista de Empleados Sector 5</h2>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Foto</th>
+                    <th class="py-2 px-4 border-b">Nombre</th>
+                    <th class="py-2 px-4 border-b">Correo Electrónico</th>
+                    <th class="py-2 px-4 border-b">Rol</th>
+                    <th class="py-2 px-4 border-b">Nivel Acceso</th>
+                </tr>
+            </thead>
+            <tbody id="tablaEmpleados4">
+                <tr>
+                    <td class="py-2 px-4 border-b">Juan Pérez</td>
+                </tr>
+        </table>
+        </h2>
+    </div>
+
+</body>
+<script src="../../static/scripts/gestionEmpleados.js"></script>
+
+</html>

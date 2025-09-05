@@ -1,0 +1,4 @@
+id_turno,nombre,observacion,hora_entrada,hora_salida,tolerancia_entrada,tolerancia_salida
+1,Mañana,Turno matutino,06:00:00,14:00:00,00:15:00,00:10:00
+2,Tarde,Turno vespertino,14:00:00,22:00:00,00:15:00,00:10:00
+3,Noche,Turno nocturno,22:00:00,06:00:00,00:15:00,00:10:00

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/style/default.css">
+    <link rel="stylesheet" href="../../style/empleado.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mi Mipyme</title>
+</head>
+
+<body>
+    <header class="barraSuperior w-full shadow-md">
+        <div class=" w-full px-4 py-2 flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-gray-800 mx-2">Panel de MiPyme</h1>
+            <h1 class="text-xl text-gray-600 mx-2">Empleados</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="../admin/inicio-admin.html"
+                            class=" justify-center hover:text-gray-100 text-white bg-gray-800 rounded-xl px-2 py-1 transition-colors duration-300 active">Inicio</a>
+                    </li>
+                    <li><a href="/" class="justify-center  hover:text-gray-800">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+    <div class="contendorBotonToken">
+
+        <button type="button" id="boton-inicioToken"
+            class="token-btn text-white text-xl font-bold flex items-center justify-center mx-auto rounded-lg bg-gray-800 my-2 px-4 py-2">
+            <img class="iconoToken w-7 h-7  " src="../../static/assets/icon/icono-token.png"
+                alt="Generar token de acceso"></img>
+            GENERAR TOKEN DE ACCESO</button>
+
+    </div>
+    <div class="infoAdmin my-4 mx-80 p-4 border rounded-lg shadow-md shadow-md flex flex-col">
+        <h2 class="text-2xl font-bold ">Mis datos</h2>
+        <div class="flex items-center mt-4">
+            <img class="previewAdmin w-40 h-40 rounded-full mx-4"
+                src="../../static/assets/imagen/imagen_prototipo_admin.jpg" alt="Foto de perfil">
+            <div>
+                <p id="nombreUsuario" class="text-xl font-bold">MARCOS SUAREZ</p>
+                <p id="sectorUsuario" class="text-lg font-semibold text-gray-600">Sector: 1 - Producción</p>
+                <p id="correoElectronico" class="text-lg font-semibold my-4">empleado@empresa.com</p>
+            </div>
+        </div>
+    </div>
+    <div class="empleados1 my-2 mx-32 p-4 border rounded-lg shadow-md shadow-md flex flex-col">
+        <h2 class="text-2xl font-bold mb-4">Empleados de mi sector</h2>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Foto</th>
+                    <th class="py-2 px-4 border-b">Nombre</th>
+                    <th class="py-2 px-4 border-b">Correo Electrónico</th>
+                    <th class="py-2 px-4 border-b">Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="tablaEmpleados1">
+                    <td class="py-2 px-4 border-b">Juan Pérez</td>
+                </tr>
+        </table>
+        </h2>
+    </div>
+    <dialog id="tokenGenerado" class="rounded-2xl shadow-lg ">
+        <div class="relative bg-white rounded-2xl shadow-lg p-8 w-[350px] flex flex-col items-center">
+            <button id="cerrarToken"
+                class="absolute top-3 right-3 bg-gray-800 text-white px-2 rounded-lg hover:text-gray-700 text-xl font-bold">x</button>
+            <h2 class="text-2xl font-bold text-center mb-2">¡Token Generado<br>Exitosamente!</h2>
+            <p id="token" class="text-5xl font-extrabold text-black my-2 tracking-widest">345 789</p>
+            <div class="text-gray-700 text-base text-justify mb-2">
+                Recuerde no compartir el código a nadie.<br>
+                Ingreselo en la puerta del sector y despeje su rostro para que la verificación de identidad se lleve a
+                cabo.<br>
+                En caso de fallar diríjase a administración
+            </div>
+            <p class="text-lg font-bold text-red-600 mt-2">Válido por 10 minutos</p>
+        </div>
+    </dialog>
+    <script>
+        document.body.classList.add('slide-in-right');
+    </script>
+</body>
+<script src="../../static/scripts/inicioEmpleado.js"></script>
+
+</html>

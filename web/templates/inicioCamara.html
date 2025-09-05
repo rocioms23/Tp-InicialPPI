@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/style/default.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Inicio con reconocimiento facial</title>
+
+</html>
+
+<body class="min-h-screen flex items-center justify-center">
+    <div class="contenedor-login flex flex-col items-center justify-center p-6 my-2">
+        <h1 class="text-3xl font-bold">Inicio de sesión como Empleado</h1>
+        <h2 class="text-gray-500 font-bold text-xl text-center">Coloque su rostro para iniciar sesión.<br>
+            Asegúrese de tener buena iluminación y el rostro despejado.
+        </h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div id="mensajeError" class="mensaje text-center">
+            {% for message in messages %}
+            <p
+                class="text font-bold {% if category == 'error' %}text-red-600{% elif category == 'success' %}text-green-600{% endif %} my-2">
+                {{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div id="contenedor" class="areaCamara video-camara flex flex-col items-center justify-center p-6 my-2">
+            <video id="camaraVideo" class="video-camara rounded-full border-4 border-gray-800 bg-gray-800"
+                alt="Cámara de video" autoplay></video>
+            <canvas id="areaCamara" class="hidden"></canvas>
+        </div>
+        <button type="button" id="boton-verificar"
+            class="boton_verificar flex items-center justify-center mx-auto rounded-2xl bg-gray-800 my-2 px-4 py-2 text-white font-bold hover:bg-gray-700 transition-colors duration-300">
+            Verificar e Iniciar Sesión
+        </button>
+    </div>
+    <script src="../static/scripts/inicioCamara.js"></script>
+    <script src="../static/scripts/scriptCamara.js"></script>
+</body>

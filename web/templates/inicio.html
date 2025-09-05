@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style/default.css">
+    <link rel="stylesheet" href="../static/style/login.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Inicio de sesión</title>
+</head>
+
+<body class="min-h-screen flex items-center justify-center">
+    <div class="contenedor-login flex flex-col items-center justify-center p-6 my-2">
+        <h1 class="text-3xl font-bold">Inicio de sesión</h1>
+        <h2 class="text-gray-700">Inicie sesión con correo electronico
+            y constraseña para acceder como administrador.
+        </h2>
+        <div id="mensajeError" class="mensaje text-center hidden">
+            <p class="text font-bold text-red-600 my-2">Correo o contraseña incorrectos</p>
+        </div>
+        <form method= "POST" class="formulario-login">
+            <input type="text"  id="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password"  id="contrasena" name="contraseña" placeholder="Contraseña" required>
+            <button type="submit" id="boton-IniciarSesionAdmin">Iniciar sesión</button>
+        </form>
+
+        <div class="flex items-center w-full my-1">
+            <hr class="flex-grow border-gray-300">
+            <span
+                class="mx-4 flex items-center justify-center w-5 h-5 rounded-full  bg-white text-xs text-gray-400">o</span>
+            <hr class="flex-grow border-gray-300">
+        </div>
+        <h2 class="text-gray-700 my-1">Inicie sesión como empleado
+        </h2>
+
+        <button type="button" id="boton-inicioCamara"
+            class="cara-btn flex items-center justify-center mx-auto rounded-xl bg-gray-800 my-2">
+            <img class="iconoPersona " src="../static/assets/icon/iconoPersona.png"
+                alt="Iniciar sesión con reconocimiento facial">
+        </button>
+    </div>
+    <script src="../static/scripts/inicioAdmin.js"></script>
+    <script src="../static/scripts/inicioBotonEmpleado.js"></script>
+</body>
+
+</html>
