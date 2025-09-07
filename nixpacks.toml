@@ -1,8 +1,6 @@
-[phases]
-install = "pip install -r requirements.txt"
-
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
 [start]
-cmd = "gunicorn --bind 0.0.0.0:8080 main:app"
-
+cmd = "gunicorn --bind 0.0.0.0:8000 main:app"
 [env]
 NIX_PACKAGES = "libgl"
