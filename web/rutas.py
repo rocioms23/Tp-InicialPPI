@@ -29,18 +29,15 @@ def registrar_rutas(app):
             frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
         # Ahora 'frame' es la imagen de OpenCV que puedes procesar
-            #ruta_imagen_recibida = "web/data/db_rostros/imagen_recibida.jpg"
-            temp_dir = '/tmp'
-            temp_file_path = os.path.join(temp_dir, 'temp.png')
-            cv2.imwrite(temp_file_path, frame)
-            #cv2.imwrite(ruta_imagen_recibida, frame)
-            if os.path.exists(temp_file_path):
+            ruta_imagen_recibida = "web/data/db_rostros/imagen_recibida.jpg"
+            cv2.imwrite(ruta_imagen_recibida, frame)
+            if os.path.exists(ruta_imagen_recibida):
                 print("Archivo de imagen recibido existe.")
             # Asegúrate de que la ruta a la imagen del empleado también sea correcta
                 ruta_rostro_empleado = "web/data/db_rostros/rostro_empleado.png"
 
                 if os.path.exists(ruta_rostro_empleado):
-                    resultado=DeepFace.verify(temp_file_path, ruta_rostro_empleado)
+                    resultado=DeepFace.verify(ruta_imagen_recibida, ruta_rostro_empleado)
                     verificado = resultado['verified']
                     print(verificado)
                     if verificado:
