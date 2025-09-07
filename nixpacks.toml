@@ -1,0 +1,8 @@
+[start]
+cmd = "gunicorn main:app --workers 1 --bind 0.0.0.0:8080"
+
+[phases]
+install = "pip install -r requirements.txt"
+build = ""
+[env]
+NIX_PACKAGES = "libgl"
