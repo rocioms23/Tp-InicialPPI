@@ -13,3 +13,7 @@ def estadisticas():
 @admin.route('/actividad')
 def actividad_empleados():
     return render_template('/admin/actividad-admin.html')
+
+@admin.route('/registros')
+def registros():
+    return render_template('/admin/registros.html')

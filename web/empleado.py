@@ -6,3 +6,7 @@ empleado = Blueprint('empleado', __name__)
 def empleado_inicio():
     return render_template('/empleado/inicio-empleado.html')
 
+@empleado.route('/registro')
+def empleado_registro():
+    return render_template('/empleado/anadir_registro.html')
+

@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let video = document.getElementById("camaraVideo"); // video is the id of video tag
     navigator.mediaDevices.getUserMedia({ video: true, audio: false })
         .then(function (stream) {
+            
             video.srcObject = stream;
+            video.setPointerCapture(0);
             video.play();
         })
         .catch(function (err) {

@@ -30,11 +30,13 @@ def registrar_rutas(app):
 
         # Ahora 'frame' es la imagen de OpenCV que puedes procesar
             ruta_imagen_recibida = "web/data/db_rostros/imagen_recibida.jpg"
+
             cv2.imwrite(ruta_imagen_recibida, frame)
             if os.path.exists(ruta_imagen_recibida):
                 print("Archivo de imagen recibido existe.")
             # Asegúrate de que la ruta a la imagen del empleado también sea correcta
                 ruta_rostro_empleado = "web/data/db_rostros/rostro_empleado.png"
+
                 if os.path.exists(ruta_rostro_empleado):
                     resultado=DeepFace.verify(ruta_imagen_recibida, ruta_rostro_empleado)
                     verificado = resultado['verified']
@@ -50,6 +52,7 @@ def registrar_rutas(app):
                         id_Imagen="4442"
                         movimiento="Salida"
                         estado="Aceptado"
+
                         os.makedirs("web/data/tablas", exist_ok=True)
                         with open(rutaTablaFichada, 'a', newline='', encoding='utf-8') as f:
                             writer = csv.writer(f)
