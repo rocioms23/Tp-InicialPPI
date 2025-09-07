@@ -37,7 +37,7 @@ def registrar_rutas(app):
                 ruta_rostro_empleado = "web/data/db_rostros/rostro_empleado.png"
 
                 if os.path.exists(ruta_rostro_empleado):
-                    resultado=DeepFace.verify(ruta_imagen_recibida, ruta_rostro_empleado)
+                    resultado=DeepFace.verify(ruta_imagen_recibida, ruta_rostro_empleado, model_name="Facenet", detector_backend="opencv")
                     verificado = resultado['verified']
                     print(verificado)
                     if verificado:
