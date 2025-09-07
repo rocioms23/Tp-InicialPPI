@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Define el comando para iniciar tu aplicación Flask
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "main:app"
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "main:app"]
