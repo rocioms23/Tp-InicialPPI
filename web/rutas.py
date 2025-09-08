@@ -12,6 +12,7 @@ def inicio():
 def inicioCamara():
     return render_template('inicioCamara.html')
 
+
 def registrar_rutas(app):
     @app.route('/verificar', methods=['POST'])
 
@@ -75,7 +76,6 @@ def registrar_rutas(app):
                 cursor.execute(sql_insert_fichada, val)
                 db_connection.commit()
 
-                print(f"Fichada de {id_empleado_encontrado} registrada correctamente.")
                 return jsonify({"status": "success", "message": "Rostro verificado y fichada registrada.", "verified": True})
             else:
                 return jsonify({"status": "error", "message": "No se encontró coincidencia.", "verified": False})
