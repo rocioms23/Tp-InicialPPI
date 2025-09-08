@@ -1,0 +1,6 @@
+id,tipo,subtipo,cantidad,fecha_ingreso,detalles,cant_descartada
+1,Electrónico,Celular,10,2025-09-01,Smartphone gama media,0
+2,Ropa,Camisa,50,2025-09-02,Camisa de algodón,2
+3,Alimento,Enlatado,200,2025-09-03,Conserva de atún,5
+4,Electrodoméstico,Licuadora,15,2025-09-04,Licuadora 500W,1
+5,Mueble,Silla,30,2025-09-05,Silla de madera,0

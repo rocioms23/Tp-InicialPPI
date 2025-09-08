@@ -1,0 +1,16 @@
+id,tipo,subtipo,cantidad,fecha_ingreso,detalles,cant_descartada
+1,Bebida,Gaseosa,100,2025-09-01,Botellas de 1.5L,2
+2,Snack,Papas fritas,200,2025-09-01,Bolsa 50g,5
+3,Lácteo,Leche entera,150,2025-09-02,Envase 1L,1
+4,Carne,Pollo fresco,80,2025-09-02,Entero sin trozar,3
+5,Panadería,Pan francés,120,2025-09-03,Pan en bolsas de 10u,0
+6,Verdura,Tomate,90,2025-09-03,Frescos por kg,4
+7,Fruta,Manzana,110,2025-09-04,Roja por kg,2
+8,Condimento,Sal fina,50,2025-09-04,Paquete 500g,1
+9,Enlatado,Arvejas enlatadas,60,2025-09-05,Lata 350g,0
+10,Bebida,Agua mineral,300,2025-09-05,Bidón 2L,6
+11,Snack,Galletitas dulces,180,2025-09-06,Paquete 100g,3
+12,Lácteo,Yogur natural,140,2025-09-06,Vaso individual,2
+13,Carne,Carne vacuna,70,2025-09-07,Corte especial,5
+14,Verdura,Lechuga,95,2025-09-07,Fresca por unidad,1
+15,Fruta,Banana,130,2025-09-07,Amarilla por kg,0
