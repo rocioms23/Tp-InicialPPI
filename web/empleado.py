@@ -36,8 +36,7 @@ def empleado_inicio():
                 e.*, 
                 s.nombre AS nombre_sector, 
                 i.ubicacion_archivo AS ruta_imagen_perfil,
-                r.nombre AS nombre_rol,
-                r.rol AS autoridad
+                r.nombre AS nombre_rol
             FROM 
                 empleados AS e 
             JOIN 
