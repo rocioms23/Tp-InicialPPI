@@ -69,7 +69,6 @@ def verificarAdmin():
 @vistas.route('/verificar', methods=['POST'])
 def verificar():
     try:
-    
         db_connection = mysql.connector.connect(
         host="interchange.proxy.rlwy.net",
         user="root",
@@ -117,6 +116,7 @@ def verificar():
             direccionImagen = "web/data/db_rostros/movimientos"
             ruta_imagen_movimiento = os.path.join(direccionImagen, nombreArchivo)
             cv2.imwrite(ruta_imagen_movimiento, frame)
+            session['id_empleado'] = id_empleado_encontrado
             
             sql_insert_fichada = """
                 INSERT INTO fichada (id_empleado, imagen, tipo, fecha_hora, decision) 
@@ -126,7 +126,7 @@ def verificar():
             cursor.execute(sql_insert_fichada, val)
             db_connection.commit()
 
-            session['id_empleado'] = id_empleado_encontrado
+            
             return jsonify({"status": "success", "message": "Rostro verificado y fichada registrada.", "verified": True})
         else:
             return jsonify({"status": "error", "message": "No se encontró coincidencia.", "verified": False})
