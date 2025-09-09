@@ -11,7 +11,7 @@ def crear_app():
     from .admin import admin
 
     from .cargarImagenes import generar_y_guardar_vectores
-    #generar_y_guardar_vectores("web/data/db_rostros/")
+    generar_y_guardar_vectores("web/data/db_rostros/")
     app.register_blueprint(vistas, url_prefix='/')
     app.register_blueprint(empleado, url_prefix='/empleado')
     app.register_blueprint(admin, url_prefix='/admin')
