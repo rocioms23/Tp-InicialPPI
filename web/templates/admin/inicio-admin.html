@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/style/default.css">
-    <link rel="stylesheet" href="../../static/style/inicioAdmin.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Inicio - Panel de Administración</title>
 </head>
@@ -21,9 +20,8 @@
                     </li>
                     <li><a href="/admin/estadisticas" class="justify-center  hover:text-gray-800">Estadistica</a></li>
                     <li><a href="/admin/actividad" class="justify-center  hover:text-gray-800">Actividad</a></li>
-                    <li><a href="/admin/registros" class="justify-center  hover:text-gray-800">Registros</a>
-                    </li>
-                    <li><a href="/" class="justify-center  hover:text-gray-800">Cerrar Sesión</a></li>
+                    <li><a href="/admin/registros" class="justify-center  hover:text-gray-800">Registros</a></li>
+                    <li><a href="/cerrarSesion" class="justify-center  hover:text-gray-800">Cerrar Sesión</a></li>
                 </ul>
             </nav>
         </div>
@@ -33,11 +31,14 @@
         <h2 class="text-2xl font-bold ">Mis datos</h2>
         <div class="flex items-center mt-4">
             <img class="previewAdmin w-40 h-40 rounded-full mx-4"
-                src="../../static/assets/imagen/imagen_prototipo_admin.jpg" alt="Foto de perfil">
+                src="{{ url_for('empleado.static', filename=empleado.ruta_imagen_perfil.split('/')[-1]) }}"  alt="Foto de perfil">
+                
             <div>
-                <p id="nombreUsuario" class="text-xl font-bold">JOSE LUIS LOPEZ</p>
-                <p id="sectorUsuario" class="text-lg font-semibold text-gray-600">Sector: 5 - Administración</p>
-                <p id="correoElectronico" class="text-lg font-semibold my-4">admin@empresa.com</p>
+                <p id="nombreUsuario" class="text-xl font-bold">{{empleado.nombre}} {{empleado.apellido}}</p>
+                <p id="rol" class="text-xl font-bold uppercase text-gray-700">{{empleado.nombre_rol}}</p>
+                <p id="sectorUsuario" class="text-lg font-semibold text-gray-600">Sector: {{empleado.id_sector}} - {{empleado.nombre_sector}}</p>
+                <p id="legajo" class="text-lg font-bold my-4">Legajo: {{empleado.legajo}}</p>
+                <p id="correo" class="text-lg font-bold my-4 text-gray-600">{{empleado.correo}}</p>
             </div>
         </div>
     </div>
@@ -54,9 +55,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr id="tablaEmpleados1">
-                    <td class="py-2 px-4 border-b">Juan Pérez</td>
-                </tr>
+            {% for emp in empleados_del_sector1 %}
+            <tr class="hover:bg-gray-100">
+                <td class="py-2 px-4 border-b">
+                    <img class="w-16 h-16 rounded-full mx-auto" 
+                         src="{{ url_for('empleado.static', filename=emp.ruta_imagen.split('/')[-1]) }}" 
+                         alt="Foto de {{ emp.nombre }}">
+                </td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre }} {{ emp.apellido }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.correo }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre_rol }}</td>
+            </tr>
+            {% endfor %}
         </table>
         </h2>
     </div>
@@ -74,9 +84,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr id="tablaEmpleados2">
-                    <td class="py-2 px-4 border-b">Juan Pérez</td>
-                </tr>
+            {% for emp in empleados_del_sector2 %}
+            <tr class="hover:bg-gray-100">
+                <td class="py-2 px-4 border-b">
+                    <img class="w-16 h-16 rounded-full mx-auto" 
+                         src="{{ url_for('empleado.static', filename=emp.ruta_imagen.split('/')[-1]) }}" 
+                         alt="Foto de {{ emp.nombre }}">
+                </td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre }} {{ emp.apellido }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.correo }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre_rol }}</td>
+            </tr>
+            {% endfor %}
         </table>
         </h2>
     </div>
@@ -93,9 +112,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr id="tablaEmpleados3">
-                    <td class="py-2 px-4 border-b">Juan Pérez</td>
-                </tr>
+            {% for emp in empleados_del_sector3 %}
+            <tr class="hover:bg-gray-100">
+                <td class="py-2 px-4 border-b">
+                    <img class="w-16 h-16 rounded-full mx-auto" 
+                         src="{{ url_for('empleado.static', filename=emp.ruta_imagen.split('/')[-1]) }}" 
+                         alt="Foto de {{ emp.nombre }}">
+                </td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre }} {{ emp.apellido }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.correo }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre_rol }}</td>
+            </tr>
+            {% endfor %}
         </table>
         </h2>
     </div>
@@ -113,9 +141,18 @@
                 </tr>
             </thead>
             <tbody id="tablaEmpleados4">
-                <tr>
-                    <td class="py-2 px-4 border-b">Juan Pérez</td>
-                </tr>
+            {% for emp in empleados_del_sector4 %}
+            <tr class="hover:bg-gray-100">
+                <td class="py-2 px-4 border-b">
+                    <img class="w-16 h-16 rounded-full mx-auto" 
+                         src="{{ url_for('empleado.static', filename=emp.ruta_imagen.split('/')[-1]) }}" 
+                         alt="Foto de {{ emp.nombre }}">
+                </td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre }} {{ emp.apellido }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.correo }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre_rol }}</td>
+            </tr>
+            {% endfor %}
         </table>
         </h2>
     </div>
@@ -132,9 +169,18 @@
                 </tr>
             </thead>
             <tbody id="tablaEmpleados4">
-                <tr>
-                    <td class="py-2 px-4 border-b">Juan Pérez</td>
-                </tr>
+            {% for emp in empleados_del_sector5 %}
+            <tr class="hover:bg-gray-100">
+                <td class="py-2 px-4 border-b">
+                    <img class="w-16 h-16 rounded-full mx-auto" 
+                         src="{{ url_for('empleado.static', filename=emp.ruta_imagen.split('/')[-1]) }}" 
+                         alt="Foto de {{ emp.nombre }}">
+                </td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre }} {{ emp.apellido }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.correo }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre_rol }}</td>
+            </tr>
+            {% endfor %}
         </table>
         </h2>
     </div>

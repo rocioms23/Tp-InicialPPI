@@ -19,7 +19,7 @@
                     <li><a href="../empleado/"
                             class=" justify-center hover:text-gray-100 text-white bg-gray-800 rounded-xl px-2 py-1 transition-colors duration-300 active">Inicio</a>
                     </li>
-                    <li><a href="/" class="justify-center  hover:text-gray-800">Cerrar Sesión</a></li>
+                    <li><a href="/cerrarSesion" class="justify-center  hover:text-gray-800">Cerrar Sesión</a></li>
                 </ul>
             </nav>
         </div>
@@ -38,11 +38,14 @@
         <h2 class="text-2xl font-bold ">Mis datos</h2>
         <div class="flex items-center mt-4">
             <img class="previewAdmin w-40 h-40 rounded-full mx-4"
-                src="../../static/assets/imagen/imagen_prototipo_admin.jpg" alt="Foto de perfil">
+                src="{{ url_for('empleado.static', filename=empleado.ruta_imagen_perfil.split('/')[-1]) }}"  alt="Foto de perfil">
+                
             <div>
-                <p id="nombreUsuario" class="text-xl font-bold">MARCOS SUAREZ</p>
-                <p id="sectorUsuario" class="text-lg font-semibold text-gray-600">Sector: 1 - Producción</p>
-                <p id="correoElectronico" class="text-lg font-semibold my-4">empleado@empresa.com</p>
+                <p id="nombreUsuario" class="text-xl font-bold">{{empleado.nombre}} {{empleado.apellido}}</p>
+                <p id="rol" class="text-xl font-bold uppercase text-gray-700">{{empleado.nombre_rol}}</p>
+                <p id="sectorUsuario" class="text-lg font-semibold text-gray-600">Sector: {{empleado.id_sector}} - {{empleado.nombre_sector}}</p>
+                <p id="legajo" class="text-lg font-bold my-4">Legajo: {{empleado.legajo}}</p>
+                <p id="correo" class="text-lg font-bold my-4 text-gray-600">{{empleado.correo}}</p>
             </div>
         </div>
     </div>
@@ -51,16 +54,26 @@
         <table class="min-w-full bg-white">
             <thead>
                 <tr>
-                    <th class="py-2 px-4 border-b">Foto</th>
-                    <th class="py-2 px-4 border-b">Nombre</th>
-                    <th class="py-2 px-4 border-b">Correo Electrónico</th>
-                    <th class="py-2 px-4 border-b">Rol</th>
+                    <th class="py-2 px-4 border-b text-center">Foto</th>
+                    <th class="py-2 px-4 border-b text-center">Nombre</th>
+                    <th class="py-2 px-4 border-b text-center">Correo Electrónico</th>
+                    <th class="py-2 px-4 border-b text-center">Rol</th>
                 </tr>
             </thead>
             <tbody>
-                <tr id="tablaEmpleados1">
-                    <td class="py-2 px-4 border-b">Juan Pérez</td>
-                </tr>
+            {% for emp in empleados_del_sector %}
+            
+            <tr class="hover:bg-gray-100">
+                <td class="py-2 px-4 border-b">
+                    <img class="w-16 h-16 rounded-full mx-auto" 
+                         src="{{ url_for('empleado.static', filename=emp.ruta_imagen.split('/')[-1]) }}" 
+                         alt="Foto de {{ emp.nombre }}">
+                </td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre }} {{ emp.apellido }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.correo }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ emp.nombre_rol }}</td>
+            </tr>
+            {% endfor %}
         </table>
         </h2>
     </div>

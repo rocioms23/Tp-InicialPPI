@@ -3,10 +3,11 @@ document.querySelector(".formulario-login").addEventListener('submit', function(
     e.preventDefault();
         const emailIngresado = document.getElementById('email').value;
         const contraseñaIngresado = document.getElementById('contrasena').value;
+
         if(verificarUsuarioRegistrado(emailIngresado, contraseñaIngresado)) {
             document.body.classList.add('slide-out-left');
             setTimeout(function() {
-                window.location.href = '/admin';
+                window.location.href = '/admin/';
             }
             , 500); // Duración de la animación en milisegundos
         }
