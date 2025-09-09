@@ -17,10 +17,57 @@ def cerrarSesion():
     session.clear()
     return redirect(url_for('vistas.inicio'))
 
+@vistas.route('/verificarAdmin', methods=['GET','POST'])
+def verificarAdmin():
+    db_connection = None
+    cursor = None
+    try:
+        data = request.get_json()
+        email = data.get('email')
+        contrasena = data.get('contrasena')
+
+        # Si los datos no se recibieron, retornar un error
+        if not email or not contrasena:
+            return jsonify({"status": "error", "message": "Datos de inicio de sesión incompletos"}), 400
+        
+        db_connection = mysql.connector.connect(
+        host="interchange.proxy.rlwy.net",
+        user="root",
+        port=51042,
+        password="kQCBSPUMdAGOiWjpYRTXKoZjBWiuHqmF",
+        database="railway"
+        )
+
+        cursor = db_connection.cursor(dictionary=True)
+        sql_select_vectors = "SELECT * FROM cuentas WHERE correo = %s AND contrasena = %s"
+        cursor.execute(sql_select_vectors, (email, contrasena,))
+        usuario = cursor.fetchone()
+        existe=False
+        if(usuario):
+            existe=True
+            session['id_empleado'] = usuario['id_empleado']
+            return jsonify({"status": "success", "message": "Inicio de sesión exitoso", "existe": existe}), 200
+        else:
+             return jsonify({"status": "error", "message": "Correo o contraseña incorrectos","existe":existe}), 401
+        
+    except mysql.connector.Error as err:
+        return jsonify({"status": "error", "message": f"Error de base de datos: {err}"}), 500
+
+    except Exception as e:
+        error=jsonify({"status": "error", "message": str(e)})
+        print(error)
+        return error, 502
+    finally:
+        if cursor:
+            cursor.close()
+        if db_connection and db_connection.is_connected():
+            cursor.close()
+            db_connection.close()
+    
+
 
 @vistas.route('/verificar', methods=['POST'])
 def verificar():
-    print("a")
     try:
     
         db_connection = mysql.connector.connect(
@@ -62,7 +109,7 @@ def verificar():
                 break
         
         if match_found:
-            ahora = datetime.datetime.now()
+            ahora = datetime.datetime.utcnow()
             movimiento = "Entrada" 
             estado = "Aceptada"
             horaArchivo = ahora.strftime('%Y%m%d_%H%M%S')
@@ -70,7 +117,7 @@ def verificar():
             direccionImagen = "web/data/db_rostros/movimientos"
             ruta_imagen_movimiento = os.path.join(direccionImagen, nombreArchivo)
             cv2.imwrite(ruta_imagen_movimiento, frame)
-            session['id_empleado'] = id_empleado_encontrado
+            
             sql_insert_fichada = """
                 INSERT INTO fichada (id_empleado, imagen, tipo, fecha_hora, decision) 
                 VALUES (%s, %s, %s, %s, %s)
@@ -79,6 +126,7 @@ def verificar():
             cursor.execute(sql_insert_fichada, val)
             db_connection.commit()
 
+            session['id_empleado'] = id_empleado_encontrado
             return jsonify({"status": "success", "message": "Rostro verificado y fichada registrada.", "verified": True})
         else:
             return jsonify({"status": "error", "message": "No se encontró coincidencia.", "verified": False})

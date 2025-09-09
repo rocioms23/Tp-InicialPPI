@@ -2,20 +2,55 @@
 document.querySelector(".formulario-login").addEventListener('submit', function(e) {
     e.preventDefault();
         const emailIngresado = document.getElementById('email').value;
-        const contraseñaIngresado = document.getElementById('contrasena').value;
+        const contrasenaIngresado = document.getElementById('contrasena').value;
 
-        if(verificarUsuarioRegistrado(emailIngresado, contraseñaIngresado)) {
+        verificarUsuario(emailIngresado, contrasenaIngresado)
+});
+
+async function verificarUsuario(email, contrasena){
+    const mensajeError = document.getElementById('mensajeError');
+ try {
+        const response = await fetch('/verificarAdmin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({  // <--- Convertir el objeto a JSON
+                'email': email,
+                'contrasena': contrasena
+            })
+        });
+
+        // La respuesta del servidor es un objeto JSON
+        const data = await response.json();
+
+        if (response.ok) {
+            // Inicio de sesión exitoso (status 200)
+            console.log("Inicio de sesión exitoso:", data.message);
+            
+            // Oculta el mensaje de error si estaba visible
+            mensajeError.classList.add('hidden');
+
             document.body.classList.add('slide-out-left');
             setTimeout(function() {
                 window.location.href = '/admin/';
-            }
-            , 500); // Duración de la animación en milisegundos
-        }
-        else {
+            }, 500);
+
+        } else {
+            // Inicio de sesión fallido (status 401 o 500)
+            console.error("Error en inicio de sesión:", data.message);
+            // Muestra el mensaje de error
+            mensajeError.classList.remove('hidden');
             document.getElementById('email').value = '';
             document.getElementById('contrasena').value = '';
         }
-});
+    } catch (error) {
+        // En caso de error de red o de otro tipo
+        console.error('Error de red o del servidor:', error);
+        mensajeError.classList.remove('hidden');
+    }    
+}
+
 
 function verificarUsuarioRegistrado(email, constrasena) {
 

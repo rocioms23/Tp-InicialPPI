@@ -12,7 +12,6 @@ def servir_foto(filename):
 
 @admin.route('/')
 def admin_inicio():
-    session['id_empleado'] = 6
     id_empleado = session.get('id_empleado', None)
     
     if not id_empleado:

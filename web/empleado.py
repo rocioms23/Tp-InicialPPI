@@ -5,6 +5,7 @@ import mysql.connector
 empleado = Blueprint('empleado', __name__,
                      static_folder='../web/data/db_rostros', 
                      static_url_path='/fotos_empleados')
+
 @empleado.route('/fotos_empleados/<path:filename>')
 def servir_foto(filename):
     # The directory where your images are located
@@ -35,6 +36,7 @@ def empleado_inicio():
                 s.nombre AS nombre_sector, 
                 i.ubicacion_archivo AS ruta_imagen_perfil,
                 r.nombre AS nombre_rol 
+                r.rol AS autoridad
             FROM 
                 empleados AS e 
             JOIN 
@@ -93,4 +95,5 @@ def empleado_inicio():
 @empleado.route('/registro')
 def empleado_registro():
     return render_template('/empleado/anadir_registro.html')
+
 
