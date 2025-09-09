@@ -18,6 +18,7 @@ def empleado_inicio():
     id_empleado = session.get('id_empleado', None)
     if not id_empleado:
         flash('Debes iniciar sesión para acceder a esta página.')
+        print("a")
         return redirect(url_for('vistas.inicio'))
 
     db_connection = None
@@ -35,7 +36,7 @@ def empleado_inicio():
                 e.*, 
                 s.nombre AS nombre_sector, 
                 i.ubicacion_archivo AS ruta_imagen_perfil,
-                r.nombre AS nombre_rol 
+                r.nombre AS nombre_rol,
                 r.rol AS autoridad
             FROM 
                 empleados AS e 
